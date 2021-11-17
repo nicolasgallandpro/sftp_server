@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+
+  ftp-server:
+    container_name: sftp_server
+    image: atmoz/sftp
+    volumes:
+        - ./home_container/user/upload:/home/user/upload
+    ports:
+        - "2222:22"
+    command: 'user:password_encryptedXXXXX:e:::upload'
+    # to encrypt your password: python -c "import crypt; print(crypt.crypt(input('password: ')))"
